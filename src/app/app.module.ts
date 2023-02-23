@@ -8,6 +8,12 @@ import { ProductsComponent } from './products/products.component';
 import { SellersComponent } from './sellers/sellers.component';
 import { ContactComponent } from './contact/contact.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignModalComponent } from './sign-modal/sign-modal.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,12 +22,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AboutUsComponent,
     ProductsComponent,
     SellersComponent,
-    ContactComponent
+    ContactComponent,
+    SignModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

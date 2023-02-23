@@ -1,4 +1,54 @@
+<!-- <div
+class="tabs-item"
+(click)="changeTab(0)"
+[ngClass]="{active: tabId ===0}"
+>
+{{'AnaSayfa'}}
+</div> -->
 
+<nav class="navbar "style="background-color: rgba(215,150,61,0.5);">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    </a>
+    <span class="navbar-brand mb-0 h1">Tarladan Eve</span>
+    <button type="button" class="btn btn-success" (click)="openDialog()" >Giriş Yap/Kaydol</button>
+  </nav>
 
-<tarladan-eve-homePage>
-</tarladan-eve-homePage>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" (click)="changeTab(0)"
+      [ngClass]="{active: tabId ===0}">Ana Sayfa</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" (click)="changeTab(1)"
+        [ngClass]="{active: tabId ===1}">Hakkımızda</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" (click)="changeTab(2)"
+        [ngClass]="{active: tabId ===2}">Ürünler</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" (click)="changeTab(3)"
+      [ngClass]="{active: tabId ===3}">Satıcılar</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" (click)="changeTab(4)"
+      [ngClass]="{active: tabId ===4}">Bize Ulaşın</a>
+    </li>
+  </ul>
+
+<div class="p-4">
+   <tarladan-eve-homePage
+    *ngIf="tabId === 0"
+   ></tarladan-eve-homePage>
+   <app-about-us
+   *ngIf="tabId === 1"
+   ></app-about-us>
+   <app-products
+   *ngIf="tabId === 2">
+   </app-products>
+   <app-sellers
+   *ngIf="tabId === 3"></app-sellers>
+   <app-contact
+   *ngIf="tabId === 4"></app-contact>
+</div>

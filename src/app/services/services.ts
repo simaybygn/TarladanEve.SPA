@@ -24,11 +24,16 @@ export class Services {
     debugger
     return this.httpClient.get<User[]>(this.basiApiUrl + 'User/GetAllUsers');
   }
-
+  getSellers(){
+    debugger
+    return this.httpClient.get<User[]>(this.basiApiUrl + 'User/GetSellers');
+  }
+  
   getUserByName(userRequest : GetDeleteUserRequest) : Observable<User>
   {
     return this.httpClient.post<User>(this.basiApiUrl + 'User/GetUserByName',userRequest)
   }
+
 
   createUser(userRequest : CreateUserRequest) : Observable<User>{
     return this.httpClient.post<User>(this.basiApiUrl + 'User/CreateUser',userRequest)

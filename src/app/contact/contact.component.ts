@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  ngOnInit(){
+    //       debugger
+    //            this.services.getAllUsers().subscribe(data=>{
+    //               console.log(data);
+    // })
+    console.log("başarılı")
+        }
 }
