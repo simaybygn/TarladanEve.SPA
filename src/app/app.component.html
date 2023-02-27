@@ -1,16 +1,11 @@
-<!-- <div
-class="tabs-item"
-(click)="changeTab(0)"
-[ngClass]="{active: tabId ===0}"
->
-{{'AnaSayfa'}}
-</div> -->
 
 <nav class="navbar "style="background-color: rgba(215,150,61,0.5);">
     <a class="navbar-brand" href="#">
       <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
     </a>
     <span class="navbar-brand mb-0 h1">Tarladan Eve</span>
+    <button type="button" class="btn btn-success" (click)="openDialog()" >Admin Paneli</button>
+    <mat-icon>add_shopping_cart</mat-icon>
     <button type="button" class="btn btn-success" (click)="openDialog()" >Giriş Yap/Kaydol</button>
   </nav>
 

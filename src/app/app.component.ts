@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { SignModalComponent } from './sign-modal/sign-modal.component';
 
 @Component({
@@ -10,13 +10,23 @@ export class AppComponent {
   title = 'TarladanEve.SPA';
   tabId =0;
 
-  constructor(private dialogRef : MatDialog){
+  constructor(private dialog : MatDialog){
 
   }
   openDialog(){
-    this.dialogRef.open(SignModalComponent
-      );
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      top: '1%',
+      left: '10%'
+    };
+    
+    const dialogRef = this.dialog.open(SignModalComponent,dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
    }
+   
 
   changeTab(Id:number){
     debugger

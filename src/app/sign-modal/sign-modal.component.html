@@ -1,3 +1,4 @@
+
 <mat-tab-group>
     <mat-tab label="Giriş Yap"> 
         <div class="form-group">
@@ -8,41 +9,54 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
-          <button class="btn btn-primary">Giriş Yap</button>
+          
+          <mat-dialog-actions align="end">
+            <button class="btn btn-primary">Giriş Yap</button>
+            <button class="btn btn-primary" mat-button mat-dialog-close>İptal</button>
+          </mat-dialog-actions>
     </mat-tab>
     <mat-tab label="Kayıt Ol"> 
-        <div class="form-group">
-            <label for="exampleInputEmail1">İsim</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="name@example.com" >
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Soyisim</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Kullanıcı Adı</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Email</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Şifre</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Telefon Numarası</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Kullanıcı Tipi</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Adres</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button class="btn btn-primary">Üye Ol</button>
+
+        <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="İsim">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Soyisim">
+              </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                  <input type="email" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="col">
+                  <input type="password" class="form-control" placeholder="Password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Kullanıcı Adı">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Telefon Numarası">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col dropdown">
+                  <input type="dropdown" class="form-control" placeholder="Kullanıcı Tipi">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Adres">
+                </div>
+              </div>
+          </form>
+        
+        <mat-dialog-actions align="end">
+            <button class="btn btn-primary" >Üye Ol</button>
+            <button class="btn btn-primary" mat-button mat-dialog-close>İptal</button>
+          </mat-dialog-actions>
     </mat-tab>
   </mat-tab-group>
+
+  
