@@ -16,6 +16,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     ProductsComponent,
     SellersComponent,
     ContactComponent,
-    SignModalComponent
+    SignModalComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatDialogModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

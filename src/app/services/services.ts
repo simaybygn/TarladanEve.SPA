@@ -1,72 +1,72 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { AppComponent } from "../app.component";
-import { Product } from "../models/product";
-import { CreateProductRequest, GetDeleteProductRequest, UpdateProductRequest } from "../models/productRequest";
-import { User } from "../models/user";
-import { CreateUserRequest, GetDeleteUserRequest, UpdateUserRequest } from "../models/userRequest";
+import { BehaviorSubject, Observable, map } from "rxjs";
+import { CreateProductRequest, UpdateProductRequest } from "../models/productRequest";
+import { CreateUserRequest, DeleteUserRequest, GetUserRequest, LoginCheckRequest, UpdateUserRequest } from "../models/userRequest";
+import { GetProductRequest } from "../models/productRequest";
+import { ProductDto } from "../models/product";
+import { UserDto } from "../models/user";
+import { DeleteProductRequest } from "../models/productRequest";
 
 @Injectable({
   providedIn : 'root'
 })
 export class Services {
+
+  public user = new BehaviorSubject<any>("") 
     constructor(private httpClient : HttpClient){
  
     }
 
-    users : User[]=[];
-    products : Product[]=[];
     basiApiUrl : string = 'https://localhost:7129/api/';
 
 
-  getAllUsers(){
+  getAllUsers(userRequest:GetUserRequest){
     debugger
-    return this.httpClient.get<User[]>(this.basiApiUrl + 'User/GetAllUsers');
+    return this.httpClient.post<UserDto[]>(this.basiApiUrl + 'User/GetUser',userRequest)
   }
+
   getSellers(){
     debugger
-    return this.httpClient.get<User[]>(this.basiApiUrl + 'User/GetSellers');
-  }
-  
-  getUserByName(userRequest : GetDeleteUserRequest) : Observable<User>
-  {
-    return this.httpClient.post<User>(this.basiApiUrl + 'User/GetUserByName',userRequest)
-  }
-
-
-  createUser(userRequest : CreateUserRequest) : Observable<User>{
-    return this.httpClient.post<User>(this.basiApiUrl + 'User/CreateUser',userRequest)
+    return this.httpClient.get<UserDto[]>(this.basiApiUrl + 'User/GetSellers').pipe(
+      map((x)=>{
+        return x.filter(q=>q.userType==1);
+      })
+    )
   }
 
-  updateUser(userRequest : UpdateUserRequest) : Observable<User>{
-    return this.httpClient.post<User>(this.basiApiUrl + 'User/UpdateUser',userRequest)
+  createUser(createUserRequest:CreateUserRequest) : Observable<string>{
+    return this.httpClient.post<string>(this.basiApiUrl + 'User/CreateUser',createUserRequest)
   }
 
-  deleteUser(userRequest : GetDeleteUserRequest) : Observable<User>{
-    return this.httpClient.post<User>(this.basiApiUrl + 'User/DeleteUser',userRequest)
+  updateUser(updateUserRequest : UpdateUserRequest) : Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/UpdateUser',updateUserRequest)
+  }
+
+  deleteUser(deleteUserRequest : DeleteUserRequest) : Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/DeleteUser',deleteUserRequest)
+  }
+
+  loginCheck(loginCheckRequest:LoginCheckRequest):Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/DeleteUser',loginCheckRequest)
   }
 
 
-  getAllProducts(){
-    return this.httpClient.get<Product[]>(this.basiApiUrl + 'Product/GetProducts');
+
+  getProducts(productRequest:GetProductRequest){
+    return this.httpClient.post<ProductDto[]>(this.basiApiUrl + 'Product/GetProducts',productRequest);
   }
 
-  // GetProductsByCreatedIdAndName(productRequest : GetDeleteProductRequest) : Observable<Product>
-  // {
-  //   return this.httpClient.post<Product>(this.basiApiUrl + 'Product/GetProductsByCreatedIdAndName',productRequest)
-  // }
-
-  createProduct(productRequest : CreateProductRequest) : Observable<Product>{
-    return this.httpClient.post<Product>(this.basiApiUrl + 'Product/CreateProduct',productRequest)
+  createProduct(createProductRequest : CreateProductRequest) : Observable<string>{
+    return this.httpClient.post<string>(this.basiApiUrl + 'Product/CreateProduct',createProductRequest)
   }
 
-  updateProduct(productRequest : UpdateProductRequest) : Observable<Product>{
-    return this.httpClient.post<Product>(this.basiApiUrl + 'Product/UpdateProduct',productRequest)
+  updateProduct(updateProductRequest : UpdateProductRequest) : Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl + 'Product/UpdateProduct',updateProductRequest)
   }
 
-  deleteProduct(productRequest : GetDeleteProductRequest) : Observable<Product>{
-    return this.httpClient.post<Product>(this.basiApiUrl + 'Product/DeleteProduct',productRequest)
+  deleteProduct(deleteProductRequest : DeleteProductRequest) : Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl + 'Product/DeleteProduct',deleteProductRequest)
   }
 
 }

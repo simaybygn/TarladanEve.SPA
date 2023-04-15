@@ -13,11 +13,12 @@ export class AppComponent {
   constructor(private dialog : MatDialog){
 
   }
+  
   openDialog(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.position = {
       top: '1%',
-      left: '10%'
+      left: '10%',
     };
     
     const dialogRef = this.dialog.open(SignModalComponent,dialogConfig);
@@ -29,7 +30,6 @@ export class AppComponent {
    
 
   changeTab(Id:number){
-    debugger
     this.tabId =Id;
   }
 

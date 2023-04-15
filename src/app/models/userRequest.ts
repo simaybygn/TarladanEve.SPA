@@ -1,20 +1,29 @@
-export class CreateUserRequest{
-    name:string| undefined;
-    surname : string| undefined;
-    userName : string| undefined;
-    email : string | undefined;
-    password: string | undefined;
-    phone : string | undefined;
-    userType: number | undefined;
-    address : string | undefined;
+export interface CreateUserRequest{
+    name:string ;
+    surname : string ;
+    userName : string ;
+    email : string  ;
+    password: string  ;
+    phone : string  ;
+    userType: number  ;
+    address : string ;
 }
 
-export class UpdateUserRequest extends CreateUserRequest{
-
+export interface UpdateUserRequest extends CreateUserRequest,DeleteUserRequest{
 }
 
-export class GetDeleteUserRequest{
-    name:string| undefined;
-    surname : string| undefined;
-    userName : string| undefined;
+export interface DeleteUserRequest {
+    id:string;
+}
+
+export interface GetUserRequest{
+    name?:string ;
+    surname? : string ;
+    userName ?: string ;
+}
+
+export interface LoginCheckRequest{
+    email : string  ;
+    password: string  ;
+    userName:string;
 }

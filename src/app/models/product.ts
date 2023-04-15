@@ -1,4 +1,4 @@
-export class Product{
+export class ProductDto{
     id: string| undefined;
     type:number| undefined;
     description ? : string| undefined;

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user';
 import { Services } from '../services/services';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from '../about-us/about-us.component';

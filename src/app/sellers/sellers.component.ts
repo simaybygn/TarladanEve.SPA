@@ -13,6 +13,7 @@ export class SellersComponent {
   }
   ngOnInit(services:Services){
 
+    debugger
     this.services.getSellers().subscribe(data=>{
       this.sellers =data;
 })
