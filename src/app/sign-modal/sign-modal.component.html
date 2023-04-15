@@ -1,62 +1,103 @@
 
 <mat-tab-group>
-    <mat-tab label="Giriş Yap"> 
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="name@example.com" >
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          
-          <mat-dialog-actions align="end">
-            <button class="btn btn-primary">Giriş Yap</button>
-            <button class="btn btn-primary" mat-button mat-dialog-close>İptal</button>
-          </mat-dialog-actions>
-    </mat-tab>
-    <mat-tab label="Kayıt Ol"> 
-
-        <form>
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="İsim">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Soyisim">
-              </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                  <input type="email" class="form-control" placeholder="name@example.com">
-                </div>
-                <div class="col">
-                  <input type="password" class="form-control" placeholder="Password">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Kullanıcı Adı">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Telefon Numarası">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col dropdown">
-                  <input type="dropdown" class="form-control" placeholder="Kullanıcı Tipi">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Adres">
-                </div>
-              </div>
-          </form>
-        
-        <mat-dialog-actions align="end">
-            <button class="btn btn-primary" >Üye Ol</button>
-            <button class="btn btn-primary" mat-button mat-dialog-close>İptal</button>
-          </mat-dialog-actions>
-    </mat-tab>
-  </mat-tab-group>
-
-  
+  <mat-tab label="Login"> 
+    <form [formGroup]="loginForm">
+      <table>
+        <tr >
+            <mat-form-field  class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input matInput  formControlName="userName">
+            </mat-form-field>
+        </tr> 
+        <tr>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="abc@example.com" formControlName="email" >
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="User Name" formControlName="password">
+          </mat-form-field>
+        </tr>
+    </table>
+    </form>
+  </mat-tab>
+  <mat-tab label="Sign Up">
+    <form [formGroup]="signUpForm">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Surname</mat-label>
+            <input matInput placeholder="Surname" formControlName="surname">
+          </mat-form-field>
+        </td>
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>User Name</mat-label>
+            <input matInput placeholder="User Name" formControlName="userName">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="someone@example.com" formControlName="email" >
+          </mat-form-field>
+        </td>
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="phone">
+          </mat-form-field>
+        </td>
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>User Type</mat-label>
+            <select matNativeControl required formControlName="userType">
+              <option value=0>Admin</option>
+              <option value=1>Costumer</option>
+            </select>
+          </mat-form-field>
+          <!-- <mat-form-field class="example-full-width">
+            <mat-label>User Type</mat-label>
+            <input matInput  formControlName="userType">
+          </mat-form-field> -->
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+          </mat-form-field>
+        </td>
+        </tr>
+      </table>
+    </form>
+    
+  </mat-tab>
+</mat-tab-group>
