@@ -1,13 +1,17 @@
 
-<nav class="navbar "style="background-color: rgba(215,150,61,0.5);">
+<nav class="navbar "style="background: linear-gradient(87.4deg, rgb(255, 241, 165) 1.9%, rgb(200, 125, 76) 49.7%, rgb(83, 54, 54) 100.5%);">
+  <div class="d-flex">
     <a class="navbar-brand" href="#">
-      <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-    </a>
-    <span class="navbar-brand mb-0 h1">Tarladan Eve</span>
-    <button type="button" class="btn btn-success" (click)="openDialog()" >Admin Paneli</button>
-    <mat-icon>add_shopping_cart</mat-icon>
-    <button type="button" class="btn btn-success" (click)="openDialog()" >Giriş Yap/Kaydol</button>
-  </nav>
+      <img src="https://img2.pngdownload.id/20180404/iqw/kisspng-farm-agriculture-tractor-agriculture-5ac47f7e585a63.0983259615228271343619.jpg" width="50" height="100%" alt="">
+    </a> 
+  </div>
+  <span style="font-family: cursive; font-size: 24px; font-weight: bold;"  class="navbar-brand mb-0 h1">Tarladan Eve</span>
+  <div class="d-flex align-items-center">
+      <mat-icon style="margin-right: 10px;" >add_shopping_cart</mat-icon>
+      <button type="button" class="btn btn-success" (click)="openDialog()" >Giriş Yap/Kaydol</button>
+  </div>
+    
+</nav>
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -30,6 +34,10 @@
       <a class="nav-link active" aria-current="page" (click)="changeTab(4)"
       [ngClass]="{active: tabId ===4}">Bize Ulaşın</a>
     </li>
+    <li>
+      <a class="nav-link active" aria-current="page" (click)="changeTab(5)"
+      [ngClass]="{active: tabId ===5}">Admin Paneli</a>
+    </li>
   </ul>
 
 <div class="p-4">
@@ -46,4 +54,6 @@
    *ngIf="tabId === 3"></app-sellers>
    <app-contact
    *ngIf="tabId === 4"></app-contact>
+   <app-admin-panel
+   *ngIf="tabId === 5"></app-admin-panel>
 </div>

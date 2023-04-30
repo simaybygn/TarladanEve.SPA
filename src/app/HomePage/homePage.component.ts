@@ -12,12 +12,4 @@ import { SellersComponent } from '../sellers/sellers.component';
 })
 export class HomePageComponent {
 
-    ngOnInit(){
-//       debugger
-//            this.services.getAllUsers().subscribe(data=>{
-//               console.log(data);
-// })
-console.log("başarılı")
-    }
-
 }

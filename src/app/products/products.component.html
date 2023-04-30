@@ -1,4 +1,18 @@
-<form [formGroup]="form">
+
+<mat-sidenav-container style="height:90vh ; margin: -20px; ">
+  <mat-sidenav opened mode="side" style="height: 100vh; width: 200px; background-color: #fdf9ff; ">
+     <mat-list >
+      <div mat-subheader>ÜRÜNLER</div>
+      <mat-list-item ><a (click)="getAllProducts()">Tüm Ürünler</a> </mat-list-item>
+      <mat-list-item><a (click)="getProductByType(1)">Portakal</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(2)">Avakado</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(3)">Buğday</a></mat-list-item>
+      <mat-list-item>Susam</mat-list-item>
+     </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="border-left: 1px solid black;" >
+    buraya cardları aç
+    <!-- <form [formGroup]="form">
 
   <label >Product Name: </label>
   <input type="text" formControlName="name">
@@ -12,4 +26,6 @@
       <p class="card-text">{{product.description}}</p>
       <a href="#" class="btn btn-primary">Sepete ekle</a>
     </div>
-  </div>
+  </div> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

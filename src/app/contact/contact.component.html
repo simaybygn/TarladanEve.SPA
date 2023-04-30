@@ -1,1 +1,28 @@
-<p>contact works!</p>
+<div div  style="padding: 15px; margin-left:35%;">
+        <mat-card style="max-width: 500px; border-width: 5px; border-radius: 10px; border-style: solid;border-color:#68ac64 ;">
+            <mat-card-header>
+              <mat-card-title>İletişim Bilgileri</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div style="margin: 25px 20px; font-style: oblique;"><mat-icon >mail</mat-icon>  E-MAİL :simay.bygn@outlook.com<br></div>
+                <div style="margin: 25px 20px; font-style: oblique;"><mat-icon> local_phone</mat-icon>  GSM NO : 0535 608 8784  <br></div>
+                <div style="margin: 25px 20px; font-style: oblique;"><mat-icon>home</mat-icon>  ADRES : Kordonboyu Mahallesi, Ankara Cd. No:145, 34860 istmarina, D:S2, Kartal  <br></div>
+                <div style="margin: 25px 20px; font-style: oblique;"><a href="https://github.com/simaybygn" target="_blank"><img style="width: 30px; height: 30px;"  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt=""></a>
+                    Buton ile GitHub hesabıma ulaşabilirsiniz</div>
+                <div style="margin: 25px 20px; font-style: oblique;"><a href="https://www.linkedin.com/in/simay-baygin/" target="_blank"><img style="width: 30px; height: 30px;"  src="https://w7.pngwing.com/pngs/511/605/png-transparent-in-logo-linkedin-diduco-ab-icon-linkedin-blue-angle-text-thumbnail.png" alt=""></a>
+                        Buton ile Linkedin hesabıma ulaşabilirsiniz</div>    
+            </mat-card-content>
+          </mat-card>
+</div>
+<div>
+    <google-map height="400px"
+    width="100%"
+    [center]="center"
+    [zoom]="zoom"
+    (mapClick)="addMarker($event)">
+        <map-marker *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition"
+        [options]="markerOptions"></map-marker>
+    </google-map>
+</div>
+

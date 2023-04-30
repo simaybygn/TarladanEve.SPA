@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Services } from '../services/services';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ProductDto } from '../models/product';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GetProductRequest } from '../models/productRequest';
@@ -21,10 +21,10 @@ export class ProductsComponent {
     
   }
   ngOnInit(){
-    this.getProducts();
+    this.getAllProducts();
   }
 
-  getProducts():void{
+  getAllProducts():void{
     if(this.subscription) this.subscription.unsubscribe();
     this.getProductRequest=this.form.value;
     this.services.getProducts(this.getProductRequest).subscribe((res)=>{
@@ -34,5 +34,13 @@ export class ProductsComponent {
   }
 
 
+  getProductByType(n:number):void{
+    this.productList=[];
+    if(this.subscription) this.subscription.unsubscribe();
+    this.services.getProducts(this.getProductRequest).pipe( map((x)=>{
+      this.productList= x.filter(q=>q.type==n);
+      console.log(this.productList);
+    }))
+  }
 
 }

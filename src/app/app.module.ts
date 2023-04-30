@@ -18,6 +18,17 @@ import {MatIconModule} from '@angular/material/icon';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import { CreateUpdateComponent } from './admin-panel/create-update/create-update.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -29,6 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     SignModalComponent,
     AdminPanelComponent,
+    CreateUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +54,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     CdkAccordionModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    NgbCarouselModule,
+    MatCardModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    MatMenuModule,
+    MatTableModule,
+    GoogleMapsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
