@@ -5,6 +5,7 @@ import { Subscription, of } from 'rxjs';
 import { Services } from '../services/services';
 import { UserDto } from '../models/user';
 import { CreateUserRequest, LoginCheckRequest } from '../models/userRequest';
+import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-sign-modal',
@@ -31,7 +32,8 @@ export class SignModalComponent  implements OnInit{
   });
 
 
-  constructor(private service: Services) { }
+  constructor(private service: Services,
+    public modalRef: MdbModalRef<SignModalComponent>) { }
 
   
   ngOnInit(): void {

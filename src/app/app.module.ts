@@ -29,9 +29,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { CreateUpdateComponent } from './admin-panel/create-update/create-update.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { BasketComponent } from './basket/basket.component';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomePageComponent,
     AboutUsComponent,
@@ -40,8 +43,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ContactComponent,
     SignModalComponent,
     AdminPanelComponent,
-    CreateUpdateComponent
-  ],
+    CreateUpdateComponent,
+    BasketComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -65,6 +69,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatMenuModule,
     MatTableModule,
     GoogleMapsModule,
+    MdbModalModule,
+    MatGridListModule
     
   ],
   providers: [],

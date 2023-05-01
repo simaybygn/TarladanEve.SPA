@@ -1,103 +1,119 @@
+<div class="modal-header">
+  <h5 class="modal-title" >Giriş Yap/Kayıt Ol</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
 
-<mat-tab-group>
-  <mat-tab label="Giriş Yap"> 
-    <form [formGroup]="loginForm">
-      <table>
-        <tr >
-            <mat-form-field  class="example-full-width">
-              <mat-label>User Name</mat-label>
-              <input matInput  formControlName="userName">
+<div class="modal-body">
+  <mat-tab-group >
+    <mat-tab label="Giriş Yap"> 
+      <form [formGroup]="loginForm" style="margin-top: 40px; ">
+        <table>
+          <tr >
+              <mat-form-field  class="example-full-width">
+                <mat-label>User Name</mat-label>
+                <input matInput  formControlName="userName">
+              </mat-form-field>
+          </tr> 
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput placeholder="abc@example.com" formControlName="email" >
             </mat-form-field>
-        </tr> 
-        <tr>
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="abc@example.com" formControlName="email" >
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="User Name" formControlName="password">
-          </mat-form-field>
-        </tr>
-    </table>
-    </form>
-  </mat-tab>
-  <mat-tab label="Kayıt Ol">
-    <form [formGroup]="signUpForm">
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" formControlName="name">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Surname</mat-label>
-            <input matInput placeholder="Surname" formControlName="surname">
-          </mat-form-field>
-        </td>
-        </tr>
+          </tr>
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="User Name" formControlName="password">
+            </mat-form-field>
+          </tr>
       </table>
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>User Name</mat-label>
-            <input matInput placeholder="User Name" formControlName="userName">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="someone@example.com" formControlName="email" >
-          </mat-form-field>
-        </td>
-        </tr>
-      </table>
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="Password" formControlName="password">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="phone">
-          </mat-form-field>
-        </td>
-        </tr>
-      </table>
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-        <td>
-          <mat-form-field appearance="fill">
-            <mat-label>User Type</mat-label>
-            <select matNativeControl required formControlName="userType">
-              <option value=0>Admin</option>
-              <option value=1>Costumer</option>
-            </select>
-          </mat-form-field>
-          <!-- <mat-form-field class="example-full-width">
-            <mat-label>User Type</mat-label>
-            <input matInput  formControlName="userType">
-          </mat-form-field> -->
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Address</mat-label>
-            <textarea matInput formControlName="address"></textarea>
-          </mat-form-field>
-        </td>
-        </tr>
-      </table>
-    </form>
-    
-  </mat-tab>
-</mat-tab-group>
+      <button  type="button"  class="btn btn-primary" style="float: right;" (click)="login()">Giriş Yap</button>
+      </form>
+    </mat-tab>
+    <mat-tab  label="Kayıt Ol">
+      <form [formGroup]="signUpForm"  style="margin-top: 40px;">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Surname</mat-label>
+              <input matInput placeholder="Surname" formControlName="surname">
+            </mat-form-field>
+          </td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input matInput placeholder="User Name" formControlName="userName">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" placeholder="someone@example.com" formControlName="email" >
+            </mat-form-field>
+          </td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Password" formControlName="password">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone</mat-label>
+              <input matInput placeholder="Phone" formControlName="phone">
+            </mat-form-field>
+          </td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>User Type</mat-label>
+              <select matNativeControl required formControlName="userType">
+                <option value=0>Yönetici/Satıcı</option>
+                <option value=1>Müşteri</option>
+              </select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Address</mat-label>
+              <textarea matInput formControlName="address"></textarea>
+            </mat-form-field>
+          </td>
+          </tr>
+        </table>
+        <button  type="button"  class="btn btn-primary" style="float: right;" (click)="signUp()">Kayıt Ol</button>
+      </form>
+      
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- <div class="modal-footer">
+  <button  type="button"  class="btn btn-primary" style="float: right;">Giriş Yap</button>
+  <button   type="button"  class="btn btn-primary" style="float: right;">Kyıt Ol</button>
+</div> -->
+
+

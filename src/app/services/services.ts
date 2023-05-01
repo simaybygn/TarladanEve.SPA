@@ -7,6 +7,7 @@ import { GetProductRequest } from "../models/productRequest";
 import { ProductDto } from "../models/product";
 import { UserDto } from "../models/user";
 import { DeleteProductRequest } from "../models/productRequest";
+import { BasketDto } from "../models/basket";
 
 @Injectable({
   providedIn : 'root'
@@ -53,7 +54,7 @@ export class Services {
 
 
 
-  getProducts(productRequest:GetProductRequest){
+  getProducts(productRequest:GetProductRequest):Observable<ProductDto[]>{
     return this.httpClient.post<ProductDto[]>(this.basiApiUrl + 'Product/GetProducts',productRequest);
   }
 
@@ -69,4 +70,18 @@ export class Services {
     return this.httpClient.post<boolean>(this.basiApiUrl + 'Product/DeleteProduct',deleteProductRequest)
   }
 
+
+
+
+  getBasket(userId:string):Observable<BasketDto[]>{
+    return this.httpClient.post<BasketDto[]>(this.basiApiUrl + 'Product/UpdateProduct',userId)
+  }
+
+  createUpdateBasket(createBasketRequest:BasketDto):Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl+ 'Product/DeleteProduct',createBasketRequest)
+  }
+
+  deleteBasket(userId:string):Observable<boolean>{
+    return this.httpClient.post<boolean>(this.basiApiUrl+ 'Product/DeleteProduct',userId)
+  }
 }
