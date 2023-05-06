@@ -1,10 +1,40 @@
-<div class="card" style="width: 18rem;" *ngFor="let seller of userList">
-    <img class="card-img-top" src="..." alt="Card image cap">
+<!-- <div class="card" style="width: 18rem;" *ngFor="let seller of userList">
+    <img class="card-img-top" src={{seller.photoUrl}} alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{seller.name}}</h5>
       <p class="card-text">{{seller.surname}}</p>
     </div>
   </div>
+ -->
 
-  <input type="file" name="dosya" />
-  <input type="submit" value="Yükle" />
+<!-- 
+  <mat-card class="example-card" *ngFor="let seller of userList">
+    <mat-card-header>
+      <mat-card-title>{{seller.name}}{{seller.surname}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src={{seller.photoUrl}} alt={{seller.userName}} style="max-width: 400px;">
+    <mat-card-content>
+      <p>
+        Adres: {{seller.address}} <br>
+        Telefon Numarası: {{seller.phone}} <br>
+        Email: {{seller.email}}
+      </p>
+    </mat-card-content>-
+  </mat-card> -->
+
+
+  <div class="row" style="margin-left: 30px;">
+    <div class="col-md-4" style="padding: 30px;" *ngFor="let seller of userList">
+      <div class="card" style="width: 18rem; border-width: 5px; border-color: darkgreen;">
+        <h3 class="card-title" style="padding: 5px;">{{seller.name}} {{seller.surname}}</h3>
+        <img class="card-img-top" src={{seller.photoUrl}} alt={{seller.userName}}>
+        <div class="card-body">
+          <p class="card-text">
+             <b>Adres: </b> {{seller.address}} <br>
+             <b>Telefon Numarası: </b>{{seller.phone}} <br>
+             <b>Email: </b>{{seller.email}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>

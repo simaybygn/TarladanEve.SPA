@@ -1,8 +1,8 @@
-export class ProductDto{
-    id: string| undefined;
-    type:number| undefined;
-    description ? : string| undefined;
-    price ? : number | undefined;
-    name: string | undefined;
-
+export interface ProductDto{
+    id: string;
+    type:number;
+    description ? : string;
+    price ? : number;
+    name: string;
+    photoUrl:string;
 }

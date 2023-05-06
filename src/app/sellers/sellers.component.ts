@@ -26,7 +26,7 @@ export class SellersComponent {
 
   getSellers():void{
     if(this.subscription) this.subscription.unsubscribe();
-    this.services.getSellers().subscribe((res)=>{
+    this.services.getSellers({}).subscribe((res)=>{
       this.userList.push(...res);
       console.log(this.userList);
     })

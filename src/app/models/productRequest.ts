@@ -1,11 +1,12 @@
 export interface CreateProductRequest{
-    type:number| undefined;
-    description  : string| undefined;
-    price  : number | undefined;
-    name: string | undefined;
+    type:number;
+    description  : string;
+    price  : number ;
+    name: string ;
+    photoUrl:string;
 }
 export interface DeleteProductRequest{
-    id: string | undefined;
+    id: string ;
 }
 
 export interface UpdateProductRequest extends CreateProductRequest,DeleteProductRequest{
@@ -13,5 +14,5 @@ export interface UpdateProductRequest extends CreateProductRequest,DeleteProduct
 
 
 export interface GetProductRequest{
-    name ? : string | undefined;
+    name ? : string ;
 }

@@ -1,24 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Services } from '../services/services';
-import { Subscription, map } from 'rxjs';
+import { Subscription, debounceTime, map } from 'rxjs';
 import { ProductDto } from '../models/product';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, UntypedFormControl } from '@angular/forms';
 import { GetProductRequest } from '../models/productRequest';
+import { UserDto } from '../models/user';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html'
 })
 export class ProductsComponent {
+  @Input() user!:UserDto;
   subscription!:Subscription;
   productList:ProductDto[]=[];
-  form=new FormGroup({
-    name: new FormControl(),
+  searchForm=new FormGroup({
+    searcItem: new FormControl()
   });
-  getProductRequest!:GetProductRequest;
 
   constructor(private services:Services){
-    
+    this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe(()=>{
+      this.getAllProducts();
+    })
   }
   ngOnInit(){
     this.getAllProducts();
@@ -26,8 +29,8 @@ export class ProductsComponent {
 
   getAllProducts():void{
     if(this.subscription) this.subscription.unsubscribe();
-    this.getProductRequest=this.form.value;
-    this.services.getProducts(this.getProductRequest).subscribe((res)=>{
+    this.productList=[];
+    this.services.getProducts({}).subscribe((res)=>{
       this.productList.push(...res);
       console.log(this.productList);
     })
@@ -35,12 +38,12 @@ export class ProductsComponent {
 
 
   getProductByType(n:number):void{
+    debugger;
     this.productList=[];
     if(this.subscription) this.subscription.unsubscribe();
-    this.services.getProducts(this.getProductRequest).pipe( map((x)=>{
-      this.productList= x.filter(q=>q.type==n);
-      console.log(this.productList);
-    }))
+    this.services.getProducts({}).subscribe((res)=>{
+      this.productList.push(...res.filter(q=>q.type==n));
+    })
   }
 
 }

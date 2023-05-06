@@ -32,6 +32,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { BasketComponent } from './basket/basket.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [	
@@ -50,6 +51,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     BrowserModule,
     HttpClientModule,
     NgbModule,
+    AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,
@@ -71,7 +73,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     GoogleMapsModule,
     MdbModalModule,
     MatGridListModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

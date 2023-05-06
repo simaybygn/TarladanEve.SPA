@@ -1,6 +1,8 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { of } from 'rxjs';
 import { CreateProductRequest, UpdateProductRequest } from 'src/app/models/productRequest';
 import { Services } from 'src/app/services/services';
@@ -10,23 +12,25 @@ import { Services } from 'src/app/services/services';
   templateUrl: './create-update.component.html'
 })
 export class CreateUpdateComponent implements OnInit {
+  @Input() data: any;
   createProductRequest!:CreateProductRequest;
   updateProductRequest!:UpdateProductRequest;
   form=new FormGroup({
     name: new FormControl(),
     price:new FormControl(),
     description:new FormControl(),
-    type:new FormControl()
+    type:new FormControl(),
+    photoUrl:new FormControl()
   });
   
 
   constructor(
     private services:Services,
-    @Inject(DIALOG_DATA) public data:any,
-    public dialogRef:DialogRef<boolean>
+    public modalRef: MdbModalRef<CreateUpdateComponent>
      ) { }
 
   ngOnInit() {
+    console.log(this.data);
     if(this.data.id!=null||''){
       this.form.patchValue({
         name:this.data.name,
@@ -43,7 +47,8 @@ export class CreateUpdateComponent implements OnInit {
       name:this.form.value.name,
       type:this.form.value.type,
       description:this.form.value.description,
-      price:this.form.value.price
+      price:this.form.value.price,
+      photoUrl:this.form.value.photoUrl
     }
 
     this.services.updateProduct(this.updateProductRequest).subscribe((res)=>{
@@ -61,7 +66,8 @@ export class CreateUpdateComponent implements OnInit {
       name:this.form.value.name,
       type:this.form.value.type,
       description:this.form.value.description,
-      price:this.form.value.price
+      price:this.form.value.price,
+      photoUrl:this.form.value.photoUrl
     }
 
     this.services.createProduct(this.createProductRequest).subscribe((res)=>{

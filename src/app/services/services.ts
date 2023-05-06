@@ -14,22 +14,23 @@ import { BasketDto } from "../models/basket";
 })
 export class Services {
 
+  private userData!:UserDto[];
   public user = new BehaviorSubject<any>("") 
     constructor(private httpClient : HttpClient){
  
     }
 
-    basiApiUrl : string = 'https://localhost:7129/api/';
+    basiApiUrl : string = 'http://localhost:5000/services/';
 
 
   getAllUsers(userRequest:GetUserRequest){
     debugger
-    return this.httpClient.post<UserDto[]>(this.basiApiUrl + 'User/GetUser',userRequest)
+    return this.httpClient.post<UserDto[]>('services/catalog/User/GetUserList',userRequest)
   }
 
-  getSellers(){
+  getSellers(userRequest:GetUserRequest){
     debugger
-    return this.httpClient.get<UserDto[]>(this.basiApiUrl + 'User/GetSellers').pipe(
+    return this.httpClient.post<UserDto[]>('services/catalog/User/GetUserList',userRequest).pipe(
       map((x)=>{
         return x.filter(q=>q.userType==1);
       })
@@ -37,51 +38,61 @@ export class Services {
   }
 
   createUser(createUserRequest:CreateUserRequest) : Observable<string>{
-    return this.httpClient.post<string>(this.basiApiUrl + 'User/CreateUser',createUserRequest)
+    return this.httpClient.post<string>('services/catalog/User/CreateUser',createUserRequest)
   }
 
   updateUser(updateUserRequest : UpdateUserRequest) : Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/UpdateUser',updateUserRequest)
+    return this.httpClient.post<boolean>('services/catalog/User/UpdateUser',updateUserRequest)
   }
 
   deleteUser(deleteUserRequest : DeleteUserRequest) : Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/DeleteUser',deleteUserRequest)
+    return this.httpClient.post<boolean>('services/catalog/User/DeleteUser',deleteUserRequest)
   }
 
   loginCheck(loginCheckRequest:LoginCheckRequest):Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl + 'User/DeleteUser',loginCheckRequest)
+    return this.httpClient.post<boolean>('services/catalog/User/LoginCheck',loginCheckRequest)
   }
 
 
 
   getProducts(productRequest:GetProductRequest):Observable<ProductDto[]>{
-    return this.httpClient.post<ProductDto[]>(this.basiApiUrl + 'Product/GetProducts',productRequest);
+    return this.httpClient.post<ProductDto[]>('services/catalog/Product/GetProductList',productRequest);
   }
 
   createProduct(createProductRequest : CreateProductRequest) : Observable<string>{
-    return this.httpClient.post<string>(this.basiApiUrl + 'Product/CreateProduct',createProductRequest)
+    return this.httpClient.post<string>('services/catalog/Product/CreateProduct',createProductRequest)
   }
 
   updateProduct(updateProductRequest : UpdateProductRequest) : Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl + 'Product/UpdateProduct',updateProductRequest)
+    return this.httpClient.post<boolean>('services/catalog/Product/UpdateProduct',updateProductRequest)
   }
 
   deleteProduct(deleteProductRequest : DeleteProductRequest) : Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl + 'Product/DeleteProduct',deleteProductRequest)
+    return this.httpClient.post<boolean>('services/catalog/Product/DeletePorduct',deleteProductRequest)
   }
 
 
 
 
   getBasket(userId:string):Observable<BasketDto[]>{
-    return this.httpClient.post<BasketDto[]>(this.basiApiUrl + 'Product/UpdateProduct',userId)
+    return this.httpClient.post<BasketDto[]>( 'services/basket/Basket/GetProductList',userId)
   }
 
   createUpdateBasket(createBasketRequest:BasketDto):Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl+ 'Product/DeleteProduct',createBasketRequest)
+    return this.httpClient.post<boolean>('services/basket/Basket/CreateUpdateBasket',createBasketRequest)
   }
 
   deleteBasket(userId:string):Observable<boolean>{
-    return this.httpClient.post<boolean>(this.basiApiUrl+ 'Product/DeleteProduct',userId)
+    return this.httpClient.post<boolean>('services/basket/Basket/DeleteBasket',userId)
+  }
+
+
+
+  public setData(data: UserDto[]): void {
+    this.userData = data;
+  }
+
+  public getData(): any {
+    return this.userData;
   }
 }

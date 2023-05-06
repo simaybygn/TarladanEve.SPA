@@ -35,7 +35,7 @@
       [ngClass]="{active: tabId ===4}">Bize Ulaşın</a>
     </li>
     <li>
-      <a class="nav-link active" aria-current="page" (click)="changeTab(5)"
+      <a *ngIf=" adminPanel===true" class="nav-link active" aria-current="page" (click)="changeTab(5)"
       [ngClass]="{active: tabId ===5}">Admin Paneli</a>
     </li>
   </ul>
@@ -55,5 +55,6 @@
    <app-contact
    *ngIf="tabId === 4"></app-contact>
    <app-admin-panel
-   *ngIf="tabId === 5"></app-admin-panel>
+   *ngIf="tabId === 5 "></app-admin-panel>
+
 </div>

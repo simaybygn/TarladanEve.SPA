@@ -4,28 +4,29 @@
      <mat-list >
       <div mat-subheader>ÜRÜNLER</div>
       <mat-list-item ><a (click)="getAllProducts()">Tüm Ürünler</a> </mat-list-item>
-      <mat-list-item><a (click)="getProductByType(1)">Portakal</a></mat-list-item>
-      <mat-list-item><a (click)="getProductByType(2)">Avakado</a></mat-list-item>
-      <mat-list-item><a (click)="getProductByType(3)">Buğday</a></mat-list-item>
-      <mat-list-item>Susam</mat-list-item>
+      <mat-list-item><a (click)="getProductByType(1)">Muz</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(2)">Portakal</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(3)">Zeytin</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(4)">Susam</a></mat-list-item>
+      <mat-list-item><a (click)="getProductByType(5)">Buğday</a></mat-list-item>
      </mat-list>
   </mat-sidenav>
   <mat-sidenav-content style="border-left: 1px solid black;" >
-    buraya cardları aç
-    <!-- <form [formGroup]="form">
-
   <label >Product Name: </label>
-  <input type="text" formControlName="name">
+  <input type="search" formControlName="searchItem">
 
-</form>
 
-<div class="card" style="width: 18rem;" *ngFor="let product of productList">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{product.name}}</h5>
-      <p class="card-text">{{product.description}}</p>
-      <a href="#" class="btn btn-primary">Sepete ekle</a>
+  <div class="row" style="margin-left: 30px;">
+    <div class="col-md-4" style="padding: 30px;" *ngFor="let product of productList">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src={{product.photoUrl}} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <a href="#" class="btn btn-primary">Sepete ekle</a>
+        </div>
+      </div>
     </div>
-  </div> -->
+  </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

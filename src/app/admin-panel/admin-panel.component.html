@@ -35,7 +35,7 @@
 </div>
  -->
 
- <table class="min-w-full leading-normal">
+ <!-- <table class="min-w-full leading-normal">
     <thead>
       <tr>
         <th
@@ -107,6 +107,50 @@
             <mat-icon>add_circle</mat-icon>
         </button>
     </tfoot>
+  </table> -->
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ürün İsmi</th>
+        <th scope="col">Ürün Tipi</th>
+        <th scope="col">Ürün Açıklaması</th>
+        <th scope="col">Ürün Fiyatı</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of productList">
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price}}</td>
+        <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="selectProduct(item,'update')">
+                <mat-icon>create</mat-icon>
+              <span>Düzenle</span>
+            </button>
+            <button mat-menu-item (click)="selectProduct(item,'delete')">
+              <mat-icon>delete_sweep</mat-icon>
+              <span>Sil</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <button (click)="newProduct()">
+          <mat-icon>add_circle</mat-icon>
+      </button>
+  </tfoot>
   </table>
+
+
+  
 
 

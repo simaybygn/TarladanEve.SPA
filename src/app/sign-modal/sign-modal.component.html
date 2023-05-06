@@ -41,13 +41,13 @@
           <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>Name</mat-label>
+              <mat-label>Ad</mat-label>
               <input matInput placeholder="Name" formControlName="name">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>Surname</mat-label>
+              <mat-label>Soyad</mat-label>
               <input matInput placeholder="Surname" formControlName="surname">
             </mat-form-field>
           </td>
@@ -57,7 +57,7 @@
           <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>User Name</mat-label>
+              <mat-label>Kullanıcı Adı</mat-label>
               <input matInput placeholder="User Name" formControlName="userName">
             </mat-form-field>
           </td>
@@ -73,13 +73,13 @@
           <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>Password</mat-label>
+              <mat-label>Şifre</mat-label>
               <input matInput type="password" placeholder="Password" formControlName="password">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>Phone</mat-label>
+              <mat-label>Telefon</mat-label>
               <input matInput placeholder="Phone" formControlName="phone">
             </mat-form-field>
           </td>
@@ -89,7 +89,7 @@
           <tr>
           <td>
             <mat-form-field appearance="fill">
-              <mat-label>User Type</mat-label>
+              <mat-label>Kullanıcı Tipi</mat-label>
               <select matNativeControl required formControlName="userType">
                 <option value=0>Yönetici/Satıcı</option>
                 <option value=1>Müşteri</option>
@@ -98,10 +98,18 @@
           </td>
           <td>
             <mat-form-field class="example-full-width">
-              <mat-label>Address</mat-label>
+              <mat-label>Adres</mat-label>
               <textarea matInput formControlName="address"></textarea>
             </mat-form-field>
           </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Fotoğraf</mat-label>
+                <textarea matInput formControlName="photoUrl"></textarea>
+              </mat-form-field>
+            </td>
           </tr>
         </table>
         <button  type="button"  class="btn btn-primary" style="float: right;" (click)="signUp()">Kayıt Ol</button>

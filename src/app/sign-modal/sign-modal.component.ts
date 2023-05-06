@@ -12,9 +12,10 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   templateUrl: './sign-modal.component.html'
 })
 export class SignModalComponent  implements OnInit{
-  @Output() userDataEvent = new EventEmitter<LoginCheckRequest>();
+  @Output() userDataEvent = new EventEmitter<UserDto[]>();
   loginRequest!:LoginCheckRequest;
   signUpRequest!:CreateUserRequest;
+  userDetail:UserDto[]=[];
   loginForm=new FormGroup({
     userName: new FormControl(),
     email:new FormControl(),
@@ -29,6 +30,7 @@ export class SignModalComponent  implements OnInit{
     phone:new FormControl(),
     userType:new FormControl(),
     address:new FormControl(),
+    photoUrl:new FormControl()
   });
 
 
@@ -49,22 +51,18 @@ export class SignModalComponent  implements OnInit{
       password:this.signUpForm.value.password,
       phone:this.signUpForm.value.phone,
       userType:this.signUpForm.value.userType,
-      address:this.signUpForm.value.address
+      address:this.signUpForm.value.address,
+      photoUrl:this.signUpForm.value.photoUrl
     }
 
     this.service.createUser(this.signUpRequest).subscribe((res)=>{
-      if(res !=''){
-        return true;
-        ///open Login tab
-      }
-      else{
-        return of("Hatalı deneme");
-      }
+      this.modalRef.close();
     })
   }
 
   login()
     {
+      this.userDetail=[];
       this.loginRequest={
         email:this.loginForm.value.email,
         userName:this.loginForm.value.userName,
@@ -73,8 +71,15 @@ export class SignModalComponent  implements OnInit{
 
       this.service.loginCheck(this.loginRequest).subscribe((res)=>{
         if(res==true){
-          this.userDataEvent.emit(this.loginRequest);
+          console.log(res);
+          this.modalRef.close();
         }
       })
+
+      this.service.getAllUsers({userName:this.loginForm.value.userName}).subscribe((res)=>{
+           this.userDetail.push(...res);
+      })
+      
+      this.service.setData(this.userDetail);
     }
   }

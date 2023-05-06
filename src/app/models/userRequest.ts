@@ -7,6 +7,7 @@ export interface CreateUserRequest{
     phone : string  ;
     userType: number  ;
     address : string ;
+    photoUrl:string;
 }
 
 export interface UpdateUserRequest extends CreateUserRequest,DeleteUserRequest{
@@ -18,7 +19,7 @@ export interface DeleteUserRequest {
 
 export interface GetUserRequest{
     name?:string ;
-    surname? : string ;
+    suranem? : string ;
     userName ?: string ;
 }
 

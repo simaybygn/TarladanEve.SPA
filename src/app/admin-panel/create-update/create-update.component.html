@@ -1,35 +1,48 @@
-<form [formGroup]="form">
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-    <td>
-      <mat-form-field class="example-full-width">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" formControlName="name">
-      </mat-form-field>
-    </td>
-    <td>
-      <mat-form-field class="example-full-width">
-        <mat-label>Type</mat-label>
-        <input matInput placeholder="type" formControlName="type">
-      </mat-form-field>
-    </td>
-    </tr>
-  </table>
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-    <td>
-      <mat-form-field class="example-full-width">
-        <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" formControlName="description">
-      </mat-form-field>
-    </td>
-    <td>
-      <mat-form-field class="example-full-width">
-        <mat-label>Price</mat-label>
-        <input matInput placeholder="Price" formControlName="price">
-      </mat-form-field>
-    </td>
-    </tr>
-  </table>
-</form>
+<div class="modal-header">
+  <h5 class="modal-title" ></h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
 
+
+<div class="modal-body">
+      <form [formGroup]="form" style="margin-top: 40px; ">
+        <table>
+          <tr >
+              <mat-form-field  class="example-full-width">
+                <mat-label>İsim</mat-label>
+                <input matInput  formControlName="name">
+              </mat-form-field>
+          </tr> 
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fiyat</mat-label>
+              <input type="number" matInput  formControlName="price" >
+            </mat-form-field>
+          </tr>
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Açıklama</mat-label>
+              <input type="text" matInput  formControlName="description">
+            </mat-form-field>
+          </tr>
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Tip</mat-label>
+              <input type="text" matInput formControlName="type">
+            </mat-form-field>
+          </tr>
+          <tr>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fotoğraf Url</mat-label>
+              <input type="text" matInput  formControlName="photoUrl">
+            </mat-form-field>
+          </tr>
+      </table>
+      <button  type="button"  class="btn btn-primary" style="float: right;" (click)="updateProduct()">+</button>
+      </form>
+</div>
