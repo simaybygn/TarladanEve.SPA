@@ -23,7 +23,10 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.description}}</p>
-          <a href="#" class="btn btn-primary">Sepete ekle</a>
+          <button  [disabled]="this.userDetail==null"  mat-flat-button color="primary" 
+          (click)="selectProduct(product)">
+            Sepete Ekle
+          </button>
         </div>
       </div>
     </div>

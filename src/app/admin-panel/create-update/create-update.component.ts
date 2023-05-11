@@ -30,17 +30,25 @@ export class CreateUpdateComponent implements OnInit {
      ) { }
 
   ngOnInit() {
+    debugger;
+    this.data = this.services.getProductData();
+    this.form.patchValue({
+      name:this.data.name,
+      price:this.data.price,
+      description:this.data.description,
+      type:this.data.type
+    });
     console.log(this.data);
-    if(this.data.id!=null||''){
-      this.form.patchValue({
-        name:this.data.name,
-        price:this.data.price,
-        description:this.data.description,
-        type:this.data.type
-      })
-    }
   }
 
+
+  onSubmit(){
+    if(this.data.id==''){
+      this.createProduct();
+    }else{
+      this.updateProduct();
+    }
+  }
   updateProduct(){
     this.updateProductRequest={
       id:this.data.id,
@@ -52,16 +60,12 @@ export class CreateUpdateComponent implements OnInit {
     }
 
     this.services.updateProduct(this.updateProductRequest).subscribe((res)=>{
-      if(res==true){
-        return true;
-      }
-      else{
-        return of("Hata!!");
-      }
+      console.log(res);
     })
   }
 
   createProduct(){
+    debugger;
     this.createProductRequest={
       name:this.form.value.name,
       type:this.form.value.type,
@@ -70,13 +74,10 @@ export class CreateUpdateComponent implements OnInit {
       photoUrl:this.form.value.photoUrl
     }
 
+    console.log(this.createProductRequest);
+
     this.services.createProduct(this.createProductRequest).subscribe((res)=>{
-      if(res !=''){
-        return true;
-      }
-      else{
-        return of("Hata!!");
-      }
+      console.log(res);
     })
   }
 

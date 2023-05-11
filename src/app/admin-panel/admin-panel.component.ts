@@ -36,7 +36,6 @@ export class AdminPanelComponent implements OnInit {
 
   getUserDetail():void{
     this.userDetail=this.services.getData();
-   console.log(this.userDetail);
   }
 
   getProductList():void{
@@ -55,6 +54,7 @@ export class AdminPanelComponent implements OnInit {
     this.selectProductEvent.emit(this.selectedProduct);
 
     if(action=='update'){
+      console.log(this.selectedProduct);
       this.openModal(this.selectedProduct);
     }
     if(action=='delete'){
@@ -63,12 +63,10 @@ export class AdminPanelComponent implements OnInit {
   }
 
   deleteProduct(item:ProductDto):void{
-    debugger;
     this.deleteProductRequest={
       id:item.id
     }
     this.services.deleteProduct(this.deleteProductRequest).subscribe((res)=>{
-      console.log(res);
       this.getProductList();
     })
 
@@ -88,9 +86,8 @@ export class AdminPanelComponent implements OnInit {
   }
 
   openModal(data:ProductDto){
-    this.modalRef = this.modalService.open(CreateUpdateComponent,{
-      data:data
-    })
+    this.services.setProductData(data);
+    this.modalRef = this.modalService.open(CreateUpdateComponent);
   }
 
    

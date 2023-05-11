@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Services } from '../services/services';
 import { BasketDto } from '../models/basket';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { UserDto } from '../models/user';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html'
 })
 export class BasketComponent implements OnInit {
-
-  userId!:string;     /////düzenle
+  
+  userDetail:UserDto[]=[];   
   basketList:BasketDto[]=[];
   totalPrice:number=0;
 
@@ -17,36 +18,34 @@ export class BasketComponent implements OnInit {
     public modalRef: MdbModalRef<BasketComponent>) { }
 
   ngOnInit() {
-    this.basketList=[{
-      userId:'deneme',
-      totalPrice:1000,
-      items:[{
-        quantity:2,
-        productId:'',
-        productName:'anamur muz',
-        price:100
-      }]
-    },{
-      userId:'deneme',
-      totalPrice:1000,
-      items:[{
-        quantity:2,
-        productId:'',
-        productName:'portakal',
-        price:20
-      }]
-    }];
-
-    this.totalPrice=1520;
+    this.userDetail=this.services.getData();
+      console.log(this.userDetail);
+    this.getBasket();
   }
 
   getBasket():void{
-    this.services.getBasket(this.userId).subscribe((res)=>{
-        this.basketList.push(...res);
+    debugger;
+    if(this.userDetail!=undefined){
+      this.services.getBasket(this.userDetail[0].id).subscribe((res)=>{
+        this.basketList.push(res[0]);
+        console.log(this.basketList[0]);
         this.basketList.forEach(item => {
-          this.totalPrice += item.totalPrice;
+          this.totalPrice = item.items[0].price*item.items[0].quantity
         });
     })
+    }
+    else{
+      this.basketList=[{
+        userId:'',
+        items:[{
+          quantity:0,
+          productId:'',
+          productName:'',
+          price:0
+        }]
+      }];
+    }
+    
     
   }
 

@@ -15,6 +15,9 @@ import { BasketDto } from "../models/basket";
 export class Services {
 
   private userData!:UserDto[];
+  private productData!: ProductDto;
+  private basketData!: BasketDto;
+
   public user = new BehaviorSubject<any>("") 
     constructor(private httpClient : HttpClient){
  
@@ -75,7 +78,7 @@ export class Services {
 
 
   getBasket(userId:string):Observable<BasketDto[]>{
-    return this.httpClient.post<BasketDto[]>( 'services/basket/Basket/GetProductList',userId)
+    return this.httpClient.post<BasketDto[]>( 'services/basket/Basket/GetBasket',userId)
   }
 
   createUpdateBasket(createBasketRequest:BasketDto):Observable<boolean>{
@@ -94,5 +97,12 @@ export class Services {
 
   public getData(): any {
     return this.userData;
+  }
+
+  setProductData(data: ProductDto) {
+    this.productData=data;
+  }
+  getProductData() {
+    return this.productData;
   }
 }

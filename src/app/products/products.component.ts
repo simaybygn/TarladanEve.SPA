@@ -14,6 +14,8 @@ export class ProductsComponent {
   @Input() user!:UserDto;
   subscription!:Subscription;
   productList:ProductDto[]=[];
+  userDetail:UserDto[]=[];
+  selectedProduct!:ProductDto;
   searchForm=new FormGroup({
     searcItem: new FormControl()
   });
@@ -21,10 +23,13 @@ export class ProductsComponent {
   constructor(private services:Services){
     this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe(()=>{
       this.getAllProducts();
+      
     })
   }
   ngOnInit(){
     this.getAllProducts();
+    this.userDetail=this.services.getData();
+      console.log(this.userDetail);
   }
 
   getAllProducts():void{
@@ -44,6 +49,22 @@ export class ProductsComponent {
     this.services.getProducts({}).subscribe((res)=>{
       this.productList.push(...res.filter(q=>q.type==n));
     })
+  }
+
+  selectProduct(item:ProductDto){
+    debugger;
+    this.selectedProduct=item;
+    this.services.createUpdateBasket({
+      userId:this.userDetail[0].id,
+      items:[{
+        quantity:1,
+        productId:this.selectedProduct.id,
+        productName:this.selectedProduct.name,
+        price:this.selectedProduct.price
+      }]
+    }).subscribe((res)=>{
+      console.log(res);
+    });
   }
 
 }

@@ -1,7 +1,6 @@
 export interface BasketDto{
     userId:string;
     items:BasketItemDto[];
-    totalPrice:number;
 }
 
 export interface BasketItemDto{
