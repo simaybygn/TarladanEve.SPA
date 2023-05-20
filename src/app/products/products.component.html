@@ -12,8 +12,7 @@
      </mat-list>
   </mat-sidenav>
   <mat-sidenav-content style="border-left: 1px solid black;" >
-  <label >Product Name: </label>
-  <input type="search" formControlName="searchItem">
+
 
 
   <div class="row" style="margin-left: 30px;">
@@ -23,10 +22,15 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text">{{product.description}}</p>
+          <div style="display: flex; align-items: center;">
+          <form [formGroup]="quantityForm" >
+            <input style="width:50%" type="number" matInput placeholder="Adet" formControlName="quantity" min="0" >
+          </form>
           <button  [disabled]="this.userDetail==null"  mat-flat-button color="primary" 
           (click)="selectProduct(product)">
             Sepete Ekle
           </button>
+        </div>
         </div>
       </div>
     </div>

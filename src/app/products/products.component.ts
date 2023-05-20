@@ -16,15 +16,11 @@ export class ProductsComponent {
   productList:ProductDto[]=[];
   userDetail:UserDto[]=[];
   selectedProduct!:ProductDto;
-  searchForm=new FormGroup({
-    searcItem: new FormControl()
+  quantityForm=new FormGroup({
+    quantity: new FormControl()
   });
 
   constructor(private services:Services){
-    this.searchForm.valueChanges.pipe(debounceTime(500)).subscribe(()=>{
-      this.getAllProducts();
-      
-    })
   }
   ngOnInit(){
     this.getAllProducts();
@@ -56,12 +52,13 @@ export class ProductsComponent {
     this.selectedProduct=item;
     this.services.createUpdateBasket({
       userId:this.userDetail[0].id,
-      items:[{
-        quantity:1,
+      products:[
+        {quantity:this.quantityForm.value.quantity,
         productId:this.selectedProduct.id,
         productName:this.selectedProduct.name,
-        price:this.selectedProduct.price
-      }]
+        price:this.selectedProduct.price}
+      ]
+        
     }).subscribe((res)=>{
       console.log(res);
     });

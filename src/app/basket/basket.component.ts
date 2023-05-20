@@ -27,22 +27,24 @@ export class BasketComponent implements OnInit {
     debugger;
     if(this.userDetail!=undefined){
       this.services.getBasket(this.userDetail[0].id).subscribe((res)=>{
-        this.basketList.push(res[0]);
-        console.log(this.basketList[0]);
-        this.basketList.forEach(item => {
-          this.totalPrice = item.items[0].price*item.items[0].quantity
+        this.basketList.push(res);
+        console.log(this.basketList);
+        this.basketList[0].products.forEach(product => {
+          const productTotalPrice = product.quantity * product.price;
+          this.totalPrice += productTotalPrice;
         });
     })
     }
     else{
       this.basketList=[{
-        userId:'',
-        items:[{
+        userId:"",
+        products:[{
           quantity:0,
           productId:'',
-          productName:'',
+          productName:'Ürün Ekleyiniz',
           price:0
         }]
+        
       }];
     }
     

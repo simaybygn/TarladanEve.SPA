@@ -32,8 +32,14 @@
           </tr>
           <tr>
             <mat-form-field class="example-full-width">
-              <mat-label>Tip</mat-label>
-              <input type="text" matInput formControlName="type">
+              <mat-label>Ürün Tipi</mat-label>
+              <select matNativeControl required formControlName="type">
+                <option value=1>Muz</option>
+                <option value=2>Turunçgiller</option>
+                <option value=3>Zeytin</option>
+                <option value=4>Susam</option>
+                <option value=5>Buğdaygiller</option>
+              </select>
             </mat-form-field>
           </tr>
           <tr>

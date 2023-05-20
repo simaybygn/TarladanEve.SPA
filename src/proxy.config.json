@@ -1,6 +1,6 @@
 {
-    "/services": {
-    "target": "http://localhost:5000",
-    "secure": false
-    }
- }
+  "/services": {
+  "target": "http://localhost:5000",
+  "secure": false
+  }
+}

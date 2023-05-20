@@ -36,7 +36,8 @@ export class CreateUpdateComponent implements OnInit {
       name:this.data.name,
       price:this.data.price,
       description:this.data.description,
-      type:this.data.type
+      type:this.data.type,
+      photoUrl:this.data.photoUrl
     });
     console.log(this.data);
   }
@@ -60,7 +61,9 @@ export class CreateUpdateComponent implements OnInit {
     }
 
     this.services.updateProduct(this.updateProductRequest).subscribe((res)=>{
-      console.log(res);
+      if(res==true){
+        this.modalRef.close();
+      }
     })
   }
 
@@ -77,7 +80,9 @@ export class CreateUpdateComponent implements OnInit {
     console.log(this.createProductRequest);
 
     this.services.createProduct(this.createProductRequest).subscribe((res)=>{
-      console.log(res);
+      if(res!=null){
+        this.modalRef.close();
+      }
     })
   }
 

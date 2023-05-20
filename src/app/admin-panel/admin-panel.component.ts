@@ -88,6 +88,9 @@ export class AdminPanelComponent implements OnInit {
   openModal(data:ProductDto){
     this.services.setProductData(data);
     this.modalRef = this.modalService.open(CreateUpdateComponent);
+    this.modalRef.onClose.subscribe(result => {
+      this.getProductList();
+    });
   }
 
    

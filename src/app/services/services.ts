@@ -8,6 +8,7 @@ import { ProductDto } from "../models/product";
 import { UserDto } from "../models/user";
 import { DeleteProductRequest } from "../models/productRequest";
 import { BasketDto } from "../models/basket";
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn : 'root'
@@ -77,8 +78,9 @@ export class Services {
 
 
 
-  getBasket(userId:string):Observable<BasketDto[]>{
-    return this.httpClient.post<BasketDto[]>( 'services/basket/Basket/GetBasket',userId)
+  getBasket(userId:string):Observable<BasketDto>{
+    const params = new HttpParams().set('userId', userId);
+    return this.httpClient.post<BasketDto>( 'services/basket/Basket/GetBasket', null, { params })
   }
 
   createUpdateBasket(createBasketRequest:BasketDto):Observable<boolean>{
